@@ -88,4 +88,4 @@ The architecture is containerized and deployed on Kubernetes, utilizing microser
 
 
 ### 4. Link to GitHub
-https://github.com/davidmigr/dna-sequencer
+https://github.com/davidmigr/dna-sequence
