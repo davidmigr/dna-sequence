@@ -1,3 +1,23 @@
+### 0. Quick Start Guide
+
+1. **Deploy the Backend**  
+   Run `./deploy.sh` to set up backend services in Kubernetes. This script builds and deploys the necessary services and starts a Minikube tunnel to allow client access.
+
+2. **Run the Client**  
+   Start the client interface with:
+   ```bash
+   python3 dna-client.py
+   ```
+   This will prompt you with the following options:
+   - **1. Analyze a DNA Sequence File**: Input a file (e.g., `sequences.txt`, one sequence per line) and optionally specify a motif for analysis.
+   - **2. Generate a Report**: Aggregate analyzed data, optionally filtered by a motif.
+   - **3. View Reports**: Display stored reports.
+   - **4. Exit**: Close the client.
+
+3. **Using Custom Sequence Files**  
+   You can use `sequences.txt` as an example file or provide your own file with one DNA sequence per line.
+
+
 ### 1. Software Description
 
 The software system is designed to analyze and aggregate DNA sequence data based on specific motifs. It consists of two primary services:
