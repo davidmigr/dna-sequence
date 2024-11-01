@@ -1,0 +1,20 @@
+# Service is abstraction that defines a logical set of Pods and a policy to access them. 
+# Services provide a stable endpoint (IP address or DNS name) to reach Pods, even if they change (scaling, restarts, etc).
+# This LoadBalancer exposes the Service to the outside world in cloud environments (or, in my case, via tunnel in Minikube)
+# Allows clients to connect to a single, stable Service endpoint without needing to know the specifics of which Pod they’re accessing. 
+# The Service manages routing traffic to the correct Pods
+# Uses the label app: nginx-reverse-proxy to find and route traffic to the Pods (labeled as such) created by the Deployment
+
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx-reverse-proxy-service
+spec:
+  type: LoadBalancer
+  selector:
+    app: nginx-reverse-proxy
+  ports:
+    - protocol: TCP
+      port: 80 # The external port accessible to clients
+      targetPort: 80 # The port on the Pod that the Service forwards traffic to, which then is re-routed according to my ConfigMap

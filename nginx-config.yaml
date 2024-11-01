@@ -1,0 +1,38 @@
+# A ConfigMap in Kubernetes is used to store configuration data separately from application code, allowing configurations to be 
+# updated without modifying the application itself.
+
+# This ConfigMap is named nginx-config and contains configuration settings for nginx
+
+# Key: A key is nginx.conf. This key serves as the identifier for the configuration data within the ConfigMap.
+# Value: A value is content of nginx.conf: holds the actual nginx configuration that defines routing rules for the HTTP server.
+
+# Nice because it decouples configuration from the application code
+
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: nginx-config
+data:
+  nginx.conf: |
+    events {}
+    http {
+      server {
+        listen 80;
+
+        # Route to Analyzer Service
+        location /analyze {
+          proxy_pass http://analyzer-service:3000;
+        }
+        location /sequences {
+          proxy_pass http://analyzer-service:3000;
+        }
+
+        # Route to Aggregator Service
+        location /generate-report {
+          proxy_pass http://aggregator-service:3000;
+        }
+        location /reports {
+          proxy_pass http://aggregator-service:3000;
+        }
+      }
+    }

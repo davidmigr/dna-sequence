@@ -1,0 +1,27 @@
+DNA Sequence App:
+
+The code sets up a DNA Analysis Service — a simple app that allows sending DNA sequences for analysis and stores the results in a database. 
+
+Saves details like the length and specific patterns ("motifs") which are part of the DNA code.
+
+Each entry is labeled with a unique ID and a timestamp (when it was analyzed) and saved in a database, making it easy to organize and retrieve the data for future reference.
+
+Why pattern searching for motifs? It can be used to search for particular sequences that might be important for understanding characteristics in DNA, like looking for signs of a disease or a unique trait.
+
+It does it in an automated way: automatically calculates the percentage of certain letters or patterns and identifying where those patterns occur in the sequence. Anyone needing this information, like scientists or researchers, can get consistent results without having to manually go through each sequence.
+
+It's easily accessible: the DNA sequences and their data are stored in a structured database, so they can be quickly retrieved through a simple request to the server. This makes it easy to compare, analyze trends, or gather information over time.
+
+It's reliable to identify: each sequence is assigned a unique ID, so it's easy to look up specific sequences or refer to them in reports, adding reliability and traceability to the data.
+
+---
+About DNA: There's four nucleotide bases, each represented by a specific letter:
+
+A - Adenine
+T - Thymine
+C - Cytosine
+G - Guanine
+
+N: Represents any base (A, T, C, or G) if a specific nucleotide could not be determined.
+R, Y, M, K, S, W, H, B, V, D: These letters may appear in DNA sequence alignments or more complex datasets. They represent ambiguity codes where multiple possible nucleotides could exist at that position, often due to sequencing uncertainties or mutations.
+In standard DNA sequence files, though, it’s typically just A, T, C, and G.

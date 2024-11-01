@@ -1,0 +1,34 @@
+# A Deployment is responsible for creating and maintaining the correct number of Pods based on the configuration provided.
+# The Deployment instructs Kubernetes to keep exactly 1 replica (copy) of this application running.
+# Specifies the nginx container using the image nginx:latest
+# Mounts the nginx-config ConfigMap to make custom configuration available to nginx within the Pod
+
+# selector.matchLabels is like a “filter” that tells the Deployment, “I will only manage Pods that have this label 
+# metadata.labels is where the label is assigned to the Pods being created, ensuring they match the Deployment’s selector.matchLabels and are thus managed by this Deployment.
+
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-reverse-proxy
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nginx-reverse-proxy
+  template:
+    metadata:
+      labels:
+        app: nginx-reverse-proxy
+    spec:
+      containers:
+      - name: nginx
+        image: nginx:latest
+        volumeMounts:
+        - mountPath: /etc/nginx/nginx.conf # path inside the container where the ConfigMap data will be available. "/etc/nginx/nginx.conf" is where nginx expects its main configuration to be
+          subPath: nginx.conf
+          name: nginx-config-volume
+      volumes:
+      - name: nginx-config-volume
+        configMap:
+          name: nginx-config
